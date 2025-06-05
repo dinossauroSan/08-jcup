@@ -27,6 +27,8 @@ inteiro = {digito}+
           }
 "+"       { return new Symbol(sym.MAIS); }
 "-"       { return new Symbol(sym.MENOS); }
+"*"       { return new Symbol(sym.MULTIPLICACAO); }
+"/"       { return new Symbol(sym.DIVISAO); }
 "("       { return new Symbol(sym.PARENTESQ); }
 ")"       { return new Symbol(sym.PARENTDIR); }
 ";"       { return new Symbol(sym.PTVIRG); }

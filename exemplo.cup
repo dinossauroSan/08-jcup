@@ -50,16 +50,24 @@ action code {:
   private Integer inverterSinal(Integer a) {
     return -a;
   }
+
+  private Integer multiplicar(Integer a, Integer b){
+    return a.intValue() * b.intValue();
+  }
+  
+  private Integer dividir(Integer a, Integer b){
+    return a.intValue() / b.intValue();
+  }
 :}
 
 terminal Integer INTEIRO;
-terminal MAIS, MENOS, MENOSUNARIO, PTVIRG, PARENTESQ, PARENTDIR;
+terminal MAIS, MENOS, MULTIPLICACAO, DIVISAO, MENOSUNARIO, PTVIRG, PARENTESQ, PARENTDIR;
 
 non terminal inicio;
 non terminal Integer expr;
 
 precedence left MAIS, MENOS;
-precedence right MENOSUNARIO; // Menos unário com maior precedência, associatividade à direita.
+precedence right DIVISAO, MULTIPLICACAO, MENOSUNARIO; // Menos unário com maior precedência, associatividade à direita.
 
 start with inicio;
 
@@ -68,6 +76,8 @@ inicio ::= expr:e PTVIRG {: System.out.println(e + " (Arquivo: " + nomeDoArquivo
 
 expr ::= expr:a MAIS expr:b             {: RESULT = somar(a, b); :}
        | expr:a MENOS expr:b            {: RESULT = subtrair(a, b); :}
+       | expr:a MULTIPLICACAO expr:b    {: RESULT = multiplicar(a, b); :}
+       | expr:a DIVISAO expr:b          {: RESULT = dividir(a,b); :}
        | MENOS expr:a                   {: RESULT = inverterSinal(a); :} %prec MENOSUNARIO       
        | PARENTESQ expr:a PARENTDIR     {: RESULT = a.intValue(); :}
        | INTEIRO:a                      {: RESULT = a.intValue(); :}
