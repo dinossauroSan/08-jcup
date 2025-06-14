@@ -1,5 +1,5 @@
 # 08-jcup
-## ATIVIDADES PRÁTICAS JCUP 08, 09 E 10
+## ATIVIDADES PRÁTICAS JCUP 08, 09, 10 e 11
 1. Criar o arquivo `exemplo.flex`:
 - `touch exemplo.flex`
 
