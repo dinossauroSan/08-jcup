@@ -29,6 +29,8 @@ inteiro = {digito}+
 "-"       { return new Symbol(sym.MENOS); }
 "*"       { return new Symbol(sym.MULTIPLICACAO); }
 "/"       { return new Symbol(sym.DIVISAO); }
+"%"       { return new Symbol(sym.MODULO); }
+"^"       { return new Symbol(sym.POTENCIACAO); }
 "("       { return new Symbol(sym.PARENTESQ); }
 ")"       { return new Symbol(sym.PARENTDIR); }
 ";"       { return new Symbol(sym.PTVIRG); }

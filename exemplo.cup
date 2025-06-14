@@ -58,16 +58,20 @@ action code {:
   private Integer dividir(Integer a, Integer b){
     return a.intValue() / b.intValue();
   }
+
+    private Integer elevar(Integer a, Integer b){
+    return a.intValue() ^ b.intValue();
+  }
 :}
 
 terminal Integer INTEIRO;
-terminal MAIS, MENOS, MULTIPLICACAO, DIVISAO, MENOSUNARIO, PTVIRG, PARENTESQ, PARENTDIR;
+terminal MAIS, MENOS, MULTIPLICACAO, DIVISAO, POTENCIACAO, MENOSUNARIO, PTVIRG, PARENTESQ, PARENTDIR;
 
 non terminal inicio;
 non terminal Integer expr;
 
 precedence left MAIS, MENOS;
-precedence right DIVISAO, MULTIPLICACAO, MENOSUNARIO; // Menos unário com maior precedência, associatividade à direita.
+precedence right DIVISAO, MULTIPLICACAO, POTENCIACAO, MENOSUNARIO; // Menos unário com maior precedência, associatividade à direita.
 
 start with inicio;
 
