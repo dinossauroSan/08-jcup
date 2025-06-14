@@ -69,10 +69,14 @@ private Integer resto(Integer a, Integer b) {
 :}
 
 terminal Integer INTEIRO;
+terminal String STRING;
 terminal MAIS, MENOS, MULTIPLICACAO, DIVISAO, MODULO, POTENCIACAO, MENOSUNARIO, PTVIRG, PARENTESQ, PARENTDIR;
 
 non terminal inicio;
 non terminal Integer expr;
+non terminal String valor;
+
+valor ::= STRING:s {: RESULT = s; :};
 
 precedence left MAIS, MENOS;
 precedence right DIVISAO, MULTIPLICACAO, MODULO, POTENCIACAO, MENOSUNARIO;

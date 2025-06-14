@@ -16,6 +16,9 @@ import java_cup.runtime.Symbol;
 // Macros:
 digito = [0-9]
 inteiro = {digito}+
+letra = [a-zA-Z]
+stringLITERAL = \"([^\"\\n])*\" 
+
 
 %%
 
@@ -40,6 +43,10 @@ inteiro = {digito}+
 ":"       { return new Symbol(sym.DOISPONTOS); }
 ";"       { return new Symbol(sym.PTVIRG); }
 \n        { /* Ignora nova linha. */ }
+{stringLITERAL}  { return new Symbol(sym.STRING, yytext()); }
+/* NEGADO ^  
+Qualquer caractere que NAO seja: " e \n
+*/
 [ \t\r]+  { /* Ignora espaços. */ }
 .         { System.err.println("\n Caractere inválido: " + yytext() +
                                "\n Linha: " + yyline +
