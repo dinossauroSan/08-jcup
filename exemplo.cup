@@ -59,19 +59,25 @@ action code {:
     return a.intValue() / b.intValue();
   }
 
-    private Integer elevar(Integer a, Integer b){
-    return a.intValue() ^ b.intValue();
+private Integer resto(Integer a, Integer b) {
+    return a.intValue() % b.intValue();
+}
+
+  private Integer elevar(Integer a, Integer b){
+    return (int) Math.pow(a.intValue(), b.intValue());
   }
 :}
 
 terminal Integer INTEIRO;
-terminal MAIS, MENOS, MULTIPLICACAO, DIVISAO, POTENCIACAO, MENOSUNARIO, PTVIRG, PARENTESQ, PARENTDIR;
+terminal MAIS, MENOS, MULTIPLICACAO, DIVISAO, MODULO, POTENCIACAO, MENOSUNARIO, PTVIRG, PARENTESQ, PARENTDIR;
 
 non terminal inicio;
 non terminal Integer expr;
 
+precedence left MULTIPLICACAO, DIVISAO, MODULO;
+precedence right POTENCIACAO;
+precedence right MENOSUNARIO;
 precedence left MAIS, MENOS;
-precedence right DIVISAO, MULTIPLICACAO, POTENCIACAO, MENOSUNARIO; // Menos unário com maior precedência, associatividade à direita.
 
 start with inicio;
 
@@ -82,6 +88,8 @@ expr ::= expr:a MAIS expr:b             {: RESULT = somar(a, b); :}
        | expr:a MENOS expr:b            {: RESULT = subtrair(a, b); :}
        | expr:a MULTIPLICACAO expr:b    {: RESULT = multiplicar(a, b); :}
        | expr:a DIVISAO expr:b          {: RESULT = dividir(a,b); :}
+       | expr:a MODULO expr:b           {: RESULT = resto(a,b); :}
+       | expr:a POTENCIACAO expr:b      {: RESULT = elevar(a,b); :}
        | MENOS expr:a                   {: RESULT = inverterSinal(a); :} %prec MENOSUNARIO       
        | PARENTESQ expr:a PARENTDIR     {: RESULT = a.intValue(); :}
        | INTEIRO:a                      {: RESULT = a.intValue(); :}
