@@ -33,6 +33,11 @@ inteiro = {digito}+
 "^"       { return new Symbol(sym.POTENCIACAO); }
 "("       { return new Symbol(sym.PARENTESQ); }
 ")"       { return new Symbol(sym.PARENTDIR); }
+"["       { return new Symbol(sym.COLCHETEESQ); }
+"]"       { return new Symbol(sym.COLCHETEDIR); }
+"{"       { return new Symbol(sym.CHAVEESQ); }
+"}"       { return new Symbol(sym.CHAVEDIR); }
+":"       { return new Symbol(sym.DOISPONTOS); }
 ";"       { return new Symbol(sym.PTVIRG); }
 \n        { /* Ignora nova linha. */ }
 [ \t\r]+  { /* Ignora espaços. */ }
