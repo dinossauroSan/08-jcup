@@ -74,10 +74,8 @@ terminal MAIS, MENOS, MULTIPLICACAO, DIVISAO, MODULO, POTENCIACAO, MENOSUNARIO, 
 non terminal inicio;
 non terminal Integer expr;
 
-precedence left MULTIPLICACAO, DIVISAO, MODULO;
-precedence right POTENCIACAO;
-precedence right MENOSUNARIO;
 precedence left MAIS, MENOS;
+precedence right DIVISAO, MULTIPLICACAO, MODULO, POTENCIACAO, MENOSUNARIO;
 
 start with inicio;
 
